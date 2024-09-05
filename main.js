@@ -1,0 +1,11 @@
+let first = 26;
+let second = "26";
+let third = true;
+let fifth = Symbol();
+let sixth = 123456787878787778777777878787n;
+console.log(typeof first);
+console.log(typeof second);
+console.log(typeof third);
+console.log(typeof fourth);
+console.log(typeof fifth);
+console.log(typeof sixth);
