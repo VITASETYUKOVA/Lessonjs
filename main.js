@@ -8,5 +8,5 @@ for (let i = 1; i <= 100; i++) {
         break;
     }
 }
-    console.log (result);
+console.log (result);
 
