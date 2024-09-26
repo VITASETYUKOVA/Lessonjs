@@ -15,13 +15,13 @@ let ladder = {
       console.log(this.current); 
       return this;               
     }
-  };
+};
   
-  const actions = ['up', 'up', 'down'];
+const actions = ['up', 'up', 'down'];
   
-  actions.filter(action => typeof ladder[action] === 'function') 
-  .forEach(action => ladder[action]()); 
+actions.filter(action => typeof ladder[action] === 'function') 
+.forEach(action => ladder[action]()); 
   
-  ladder.current = 0; 
+ladder.current = 0; 
   
-  ladder.up().up().down().showStep(); 
+ladder.up().up().down().showStep(); 
