@@ -1,9 +1,6 @@
 const imgToChange = document.querySelector("#imgToChange");
 
-const min = 1; 
-const max = 9; 
-
-const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+const randomNumber = Math.floor(Math.random() * 9) + 1;
 
 imgToChange.src = `./images/${randomNumber}.jpg`; 
 
