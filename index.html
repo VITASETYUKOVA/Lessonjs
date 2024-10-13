@@ -1,11 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
-<body>
-   <script src="main.js"></script> 
-</body>
+  </head>
+  <body>
+    <div class="contact__contaner">
+      <h2>Order form</h2>
+      <form class="data__order" action="#" method="post" id="data__order">
+        <div class="data__info">
+          <label class="data__name" for="authname">Full Name</label>
+          <input
+            class="field"
+            type="text"
+            id="authname"
+            name="user name"
+            placeholder="John Doe"
+            required
+          />
+        </div>
+        <div class="error" id="authnameError"></div>
+        <div class="data__info">
+          <label class="data__name" for="authmail">Email</label>
+          <input
+            class="field"
+            type="text"
+            id="authmail"
+            name="user email"
+            placeholder="itagency@gmail.com"
+            required
+          />
+        </div>
+        <div class="error" id="authmailError"></div>
+        <div class="data__info">
+          <label class="data__name" for="authphone">Phone</label>
+          <input
+            class="field"
+            type="text"
+            id="authphone"
+            name="user phone"
+            placeholder="+380997777777"
+            required
+          />
+        </div>
+        <div class="error" id="authphoneError"></div>
+        <div class="data__info">
+          <label class="data__name" for="authmessage">Message</label>
+          <input
+            class="field"
+            type="text"
+            id="authmessage"
+            name="user message"
+            placeholder="Write your message"
+            required
+          />
+        </div>
+        <div class="error" id="authmessageError"></div>
+        <button class="contact__button" id="submitBtn" type="submit">
+          Send message
+        </button>
+      </form>
+    </div>
+    <script src="main.js"></script>
+  </body>
 </html>
