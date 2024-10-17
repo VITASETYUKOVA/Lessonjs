@@ -1,11 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Document</title>
-</head>
-<body>
-   <script src="main.js"></script> 
-</body>
+  </head>
+  <body>
+    <section class="destinations">
+      <div class="wrapper">
+        <div class="destinations__navigation">
+          <h3 class="destinations__heading">Most Popular Destinations</h3>
+          <div class="destinations__arrows">
+            <button
+              class="destinations__btn destinations__btn--prev"
+              id="prev"
+              type="button"
+            >
+              <svg width="54" height="54">
+                <use xlink:href="#toggle-left" />
+              </svg>
+            </button>
+            <button
+              class="destinations__btn destinations__btn--next"
+              id="next"
+              type="button"
+            >
+              <svg width="54" height="54">
+                <use xlink:href="#toggle-right" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="destinations__box">
+          <div class="destinations__list">
+            <div class="destinations__item slide active">
+              <a class="destinations__link" href="#">
+                <div class="destinations__img">
+                  <img
+                    src="./images/AU.png"
+                    alt="sightAustralia"
+                    width="288"
+                    height="186"
+                  />
+                </div>
+              </a>
+              <div class="destinations__inner">
+                <div class="destinations__text">
+                  <div class="destinations__icon">
+                    <img
+                      src="./images/Australia.png"
+                      alt="flagAustralia"
+                      width="42"
+                      height="32"
+                    />
+                  </div>
+                  <h3 class="destinations__title">Australia (AU)</h3>
+                </div>
+                <a href="#" class="destinations__button">Learn More</a>
+              </div>
+            </div>
+            <div class="destinations__item slide">
+              <a class="destinations__link" href="#">
+                <div class="destinations__img">
+                  <img
+                    src="./images/CO.png"
+                    alt="sightColombai"
+                    width="288"
+                    height="186"
+                  />
+                </div>
+              </a>
+              <div class="destinations__inner">
+                <div class="destinations__text">
+                  <div class="destinations__icon">
+                    <img
+                      src="./images/Colombai.png"
+                      alt="flagColombai"
+                      width="42"
+                      height="32"
+                    />
+                  </div>
+                  <h3 class="destinations__title">Colombai (CO)</h3>
+                </div>
+                <a href="#" class="destinations__button">Learn More</a>
+              </div>
+            </div>
+            <div class="destinations__item slide">
+              <a class="destinations__link" href="#">
+                <div class="destinations__img">
+                  <img
+                    src="./images/IN.png"
+                    alt="sightIndia"
+                    width="288"
+                    height="186"
+                  />
+                </div>
+              </a>
+              <div class="destinations__inner">
+                <div class="destinations__text">
+                  <div class="destinations__icon">
+                    <img
+                      src="./images/India.png"
+                      alt="flagIndia"
+                      width="42"
+                      height="32"
+                    />
+                  </div>
+                  <h3 class="destinations__title">India (IN)</h3>
+                </div>
+                <a href="#" class="destinations__button">Learn More</a>
+              </div>
+            </div>
+            <div class="destinations__item slide">
+              <a class="destinations__link" href="#">
+                <div class="destinations__img">
+                  <img
+                    src="./images/SA.png"
+                    alt="sightArbia"
+                    width="288"
+                    height="186"
+                  />
+                </div>
+              </a>
+              <div class="destinations__inner">
+                <div class="destinations__text">
+                  <div class="destinations__icon">
+                    <img
+                      src="./images/SaudiArbia.png"
+                      alt="flagSaudiArbia"
+                      width="42"
+                      height="32"
+                    />
+                  </div>
+                  <h3 class="destinations__title">Saudi Arbia (SA)</h3>
+                </div>
+                <a href="#" class="destinations__button">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dots">
+          <span class="dot active" data-slide="0"></span>
+          <span class="dot" data-slide="1"></span>
+          <span class="dot" data-slide="2"></span>
+          <span class="dot" data-slide="3"></span>
+        </div>
+      </div>
+    </section>
+
+    <svg style="display: none" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="toggle-left" viewBox="0 0 54 54">
+        <circle cx="27" cy="27" r="27" fill="#F3F3F3" />
+        <g clip-path="url(#a)">
+          <path
+            fill="#2C2C2C"
+            d="M22.328 26H34.5v2H22.328l5.364 5.364-1.414 1.414L18.5 27l7.778-7.778 1.414 1.414L22.328 26Z"
+          />
+        </g>
+        <defs>
+          <clipPath id="a">
+            <path fill="#fff" d="M14.5 15h24v24h-24z" />
+          </clipPath>
+        </defs>
+      </symbol>
+      <symbol id="toggle-right" viewBox="0 0 54 54">
+        <circle cx="27" cy="27" r="27" fill="#54C1FF" />
+        <g clip-path="url(#b)">
+          <path
+            fill="#fff"
+            d="m30.672 26-5.364-5.364 1.414-1.414L34.5 27l-7.778 7.778-1.414-1.414L30.672 28H18.5v-2h12.172Z"
+          />
+        </g>
+        <defs>
+          <clipPath id="b">
+            <path fill="#fff" d="M14.5 15h24v24h-24z" />
+          </clipPath>
+        </defs>
+      </symbol>
+    </svg>
+
+    <script src="main.js"></script>
+  </body>
 </html>

@@ -1,0 +1,98 @@
+.destinations {
+    padding: 60px 83px 60px 80px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .destinations__heading {
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 52px;
+    text-align: center;
+  }
+  
+  .destinations__list {
+    position: relative;
+  }
+  
+  .destinations__item {
+    display: none; 
+  }
+  
+  .destinations__item.active {
+    display: block; 
+  }
+  
+  .destinations__button {
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: grey;
+    border-radius: 12px;
+    border: 2px solid grey;
+    padding: 15px;
+    margin-top: 30px;
+  }
+  
+  .destinations__button:hover,
+  .destinations__button:active {
+    border-radius: 30px;
+    color: blue;
+  }
+  
+  .destinations__button:hover {
+    background-color: green;
+  }
+  
+  .destinations__button:active {
+    background-color: green;
+  }
+  
+  .destinations__btn {
+    font-size: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: 0.3s;
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%);
+  }
+  
+  .destinations__btn--prev {
+    left: 15px; 
+  }
+  
+  .destinations__btn--next {
+    right: 15px; 
+  }
+  
+  .destinations__arrows {
+    position: relative;
+  }
+  
+  .dots {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: #54C1FF;
+  }
