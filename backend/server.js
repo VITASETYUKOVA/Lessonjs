@@ -1,14 +1,15 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
-app.use(express.json());  
-app.use(express.static('frontend'));  
+app.use(cors());
+app.use(express.json());
 
 let todos = [
-    { id: 1, title: 'Задача 1', completed: false },
-    { id: 2, title: 'Задача 2', completed: false },
-    { id: 3, title: 'Задача 3', completed: true }
+    { id: 1, title: 'Перше завдання', completed: false },
+    { id: 2, title: 'Друге завдання', completed: true },
+    { id: 3, title: 'Третє завдання', completed: false }
 ];
 
 app.get('/todos', (req, res) => {
@@ -16,37 +17,41 @@ app.get('/todos', (req, res) => {
 });
 
 app.post('/todos', (req, res) => {
-    const { title, completed } = req.body;
-    const newTodo = {
-        id: todos.length + 1,
-        title: title,
-        completed: completed || false
-    };
+    const newTodo = req.body;
+    
+    newTodo.id = todos.length ? todos[todos.length - 1].id + 1 : 1;
     todos.push(newTodo);
     res.status(201).json(newTodo);
 });
 
-app.put('/todos/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    const { title, completed } = req.body;
 
-    let todo = todos.find(todo => todo.id === id);
-    if (todo) {
-        todo.title = title || todo.title;
-        todo.completed = completed !== undefined ? completed : todo.completed;
-        res.json(todo);
+app.put('/todos/:id', (req, res) => {
+    const { id } = req.params;
+    const updatedTodo = req.body;
+    const index = todos.findIndex(todo => todo.id === parseInt(id));
+
+    if (index !== -1) {
+       
+        todos[index] = { id: parseInt(id), ...updatedTodo };
+        res.json(todos[index]);
     } else {
-        res.status(404).json({ message: 'Задача не знайдена' });
+        res.status(404).json({ error: 'Задача не знайдена' });
     }
 });
 
 app.delete('/todos/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    todos = todos.filter(todo => todo.id !== id);
-    res.status(200).json({ message: 'Задача видалена' });
+    const { id } = req.params;
+    const index = todos.findIndex(todo => todo.id === parseInt(id));
+
+    if (index !== -1) {
+       
+        todos.splice(index, 1);
+        res.status(204).end(); 
+    } else {
+        res.status(404).json({ error: 'Задача не знайдена' });
+    }
 });
 
-// Запуск сервера
-app.listen(port, () => {
-    console.log(`Сервер працює на порту ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
 });

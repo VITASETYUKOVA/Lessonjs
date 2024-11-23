@@ -1,6 +1,5 @@
 const apiUrl = 'http://localhost:3000/todos';
 
-
 async function getTodos() {
     const response = await fetch(apiUrl);
     const todos = await response.json();
@@ -14,14 +13,38 @@ function renderTodos(todos) {
     todos.forEach(todo => {
         const todoItem = document.createElement('div');
         todoItem.className = 'todo-item';
+        todoItem.dataset.id = todo.id; 
 
         todoItem.innerHTML = `
             <span>${todo.title} - ${todo.completed ? 'Виконано' : 'Не виконано'}</span>
-            <button onclick="deleteTodo(${todo.id})">Видалити</button>
-            <button class="edit-button" onclick="openEditForm(${todo.id}, '${todo.title}', ${todo.completed})">Редагувати</button>
+            <button class="delete-button">Видалити</button>
+            <button class="edit-button">Редагувати</button>
         `;
 
         todoList.appendChild(todoItem);
+    });
+
+    addEventListeners();
+}
+
+function addEventListeners() {
+    const deleteButtons = document.querySelectorAll('.delete-button');
+    const editButtons = document.querySelectorAll('.edit-button');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const todoId = e.target.closest('.todo-item').dataset.id; 
+            deleteTodo(todoId);
+        });
+    });
+
+    editButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const todoId = e.target.closest('.todo-item').dataset.id;
+            const todoTitle = e.target.closest('.todo-item').querySelector('span').textContent.split(' - ')[0];
+            const todoCompleted = e.target.closest('.todo-item').querySelector('span').textContent.includes('Виконано');
+            openEditForm(todoId, todoTitle, todoCompleted);
+        });
     });
 }
 
@@ -51,12 +74,11 @@ async function deleteTodo(id) {
     });
 
     if (response.ok) {
-        getTodos(); 
+        getTodos();  
     } else {
         alert('Не вдалося видалити задачу');
     }
 }
-
 
 function openEditForm(id, title, completed) {
     const newTitle = prompt('Редагувати назву задачі:', title);
@@ -66,7 +88,6 @@ function openEditForm(id, title, completed) {
         updateTodo(id, newTitle, newCompleted);
     }
 }
-
 
 async function updateTodo(id, title, completed) {
     const updatedTodo = { title, completed };
@@ -78,7 +99,7 @@ async function updateTodo(id, title, completed) {
     });
 
     if (response.ok) {
-        getTodos(); 
+        getTodos();  
     } else {
         alert('Не вдалося оновити задачу');
     }
