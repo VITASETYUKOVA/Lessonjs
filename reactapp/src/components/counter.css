@@ -1,0 +1,39 @@
+.counter-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .counter-value {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .counter-mode {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .counter-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .toggle-button {
+    background-color: lightblue;
+  }
+  
+  .reset-button {
+    background-color: lightcoral;
+  }
+  
+  .counter-multiplier-button {
+    margin: 5px;
+    padding: 10px;
+  }
+  
+  .counter-multiplier-button.active {
+    background-color: lightgreen;
+  }
+  
