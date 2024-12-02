@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import SmileList from './SmileList';
-import '../App.css'; // Подключение CSS из корня
+import '../App.css'; 
 
 class SmileVote extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      smilies: [], // Изначально пустой массив
+      smilies: [], 
       winner: null,
     };
   }

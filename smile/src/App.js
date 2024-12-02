@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Component } from 'react';
 import SmileVote from './smilepages/SmileVote';
 
-function App() {
-  return (
-    <div>
-      <SmileVote />
-    </div>
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <SmileVote />
+      </div>
+    );
+  }
 }
 
 export default App;
