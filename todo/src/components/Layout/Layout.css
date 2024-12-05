@@ -1,28 +1,24 @@
-/* Сброс стилей */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Устанавливаем основной контейнер */
 body {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column; /* Вертикальное расположение */
-  min-height: 100vh; /* Растягиваем контейнер на всю высоту экрана */
+  flex-direction: column; 
+  min-height: 100vh; 
 }
 
-/* Контейнер для всего приложения */
 .container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh; /* Растягиваем на всю высоту */
+  height: 100vh; 
 }
 
-/* Стили для хедера */
 .header-light, .header-dark {
   width: 100%;
   height: 60px;
@@ -33,35 +29,32 @@ body {
   align-items: center;
   justify-content: space-around;
   border-bottom: 1px solid #000000;
-  position: fixed; /* Фиксированное позиционирование */
+  position: fixed; 
   top: 0;
   left: 0;
-  z-index: 1000; /* Хедер всегда сверху */
+  z-index: 1000; 
 }
 
-/* Тема для светлого фона */
+
 .header-light {
   background-color: #ffffff;
   color: #000000;
 }
 
-/* Тема для тёмного фона */
 .header-dark {
   background-color: #000000;
   color: #ffffff;
 }
 
-/* Стили для ссылок в хедере */
 .nav-link {
   text-decoration: none;
   color: inherit;
   padding: 0 10px;
 }
 
-/* Контейнер для основного контента */
 .main-content {
-  margin-top: 60px; /* Отступ от хедера, чтобы контент не перекрывался */
+  margin-top: 60px; 
   width: 100%;
   padding: 20px;
-  flex-grow: 1; /* Растягиваем основной контент на оставшуюся высоту */
+  flex-grow: 1; 
 }
