@@ -1,0 +1,17 @@
+html, body, #root {
+    height: 100%; 
+    margin: 0;   
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  footer {
+    background-color: #001529;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
