@@ -23,7 +23,7 @@ const todosSlice = createSlice({
     deleteTodoFromStore: (state, action) => {
       state.todos = state.todos.filter(todo => todo.id !== action.payload);
     },
-    reset: () => initialState, // Добавляем экшен для сброса состояния
+    reset: () => initialState, 
   },
   extraReducers: (builder) => {
     builder
