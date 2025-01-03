@@ -1,0 +1,25 @@
+import axios from 'axios';
+
+ const fetchHotelsThunk = (values) => async (dispatch) => {
+    try {
+        // Отправка GET запроса с параметром city
+        const response = await axios.get('http://localhost:3001/hotels', {
+            params: {
+                city: values.city,  
+            },
+        });
+
+        dispatch({
+            type: 'FETCH_HOTELS_SUCCESS',
+            payload: response.data,
+        });
+    } catch (error) {
+      
+        dispatch({
+            type: 'FETCH_HOTELS_ERROR',
+            error: error.message,
+        });
+    }
+};
+
+export default fetchHotelsThunk; 
