@@ -1,29 +1,25 @@
 import axios from "axios";
 import {
-  setDestinations,
-  setLoading,
-  setError,
+  fetchDestinationsPending,
+  fetchDestinationsFulfilled,
+  fetchDestinationsRejected,
 } from "../slices/destinationsSlice";
 
 export const fetchDestinationsThunk = () => async (dispatch) => {
-  dispatch(setLoading(true));
+  dispatch(fetchDestinationsPending());
+
   try {
     const response = await axios.get("http://localhost:3001/destination");
-  
-
     const validDestinations = response.data.filter(
       (dest) => dest.id && dest.value && dest.label
     );
 
-    if (validDestinations.length === 0) {
-      console.log("Нет валидных данных для отображения");
+    if (!validDestinations.length) {
+      console.log("Нема валідних данных для відображення");
     }
 
-    dispatch(setDestinations(validDestinations));
+    dispatch(fetchDestinationsFulfilled(validDestinations));
   } catch (error) {
-    console.error("Ошибка при запросе:", error);
-    dispatch(setError(error.message));
-  } finally {
-    dispatch(setLoading(false));
+    dispatch(fetchDestinationsRejected(error.message));
   }
 };

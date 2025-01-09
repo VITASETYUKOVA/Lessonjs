@@ -1,11 +1,16 @@
-import axios from 'axios';
+import store from "../store";
+import { fetchHotelsThunk } from "../store/thunks/fetchHotelsThunk";
 
 export const hotelsLoader = async () => {
-    try {
-        const response = await axios.get('http://localhost:3001/hotels');
-                return response.data; 
-    } catch (error) {
-        console.error('Error fetching hotels:', error.message); 
-        throw new Error('Failed to load hotels: ' + error.message);
+  try {
+    await store.dispatch(fetchHotelsThunk());
+    const state = store.getState();
+    if (state.hotels.error) {
+      throw new Error(state.hotels.error);
     }
+
+    return state.hotels.list;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 };

@@ -4,7 +4,10 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Hotels from "./pages/Hotels";
 import ErrorPage from "./pages/ErrorPage";
+import { destinationsLoader } from "./loaders/destinationsLoader";
+import { hotelsLoader } from "./loaders/hotelsLoader";
 import "./styles/style.css";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,6 +17,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader: destinationsLoader, 
       },
       {
         path: "about",
@@ -22,6 +26,7 @@ const router = createBrowserRouter([
       {
         path: "hotels",
         element: <Hotels />,
+        loader: hotelsLoader
       },
     ],
   },

@@ -1,24 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  list: [],
+  loading: false,
+  error: null,
+};
+
 const destinationsSlice = createSlice({
   name: "destinations",
-  initialState: {
-    list: [], 
-    loading: false, 
-    error: null, 
-  },
+  initialState,
   reducers: {
-    setDestinations(state, action) {
-      state.list = action.payload; 
+    fetchDestinationsPending: (state) => {
+      state.loading = true;
+      state.error = null;
     },
-    setLoading(state, action) {
-      state.loading = action.payload; 
+
+    fetchDestinationsFulfilled: (state, action) => {
+      state.list = [...action.payload];
+      state.loading = false;
     },
-    setError(state, action) {
-      state.error = action.payload; 
+
+    fetchDestinationsRejected: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     },
   },
 });
 
-export const { setDestinations, setLoading, setError } = destinationsSlice.actions;
+export const {
+  fetchDestinationsPending,
+  fetchDestinationsFulfilled,
+  fetchDestinationsRejected,
+} = destinationsSlice.actions;
+
 export default destinationsSlice.reducer;

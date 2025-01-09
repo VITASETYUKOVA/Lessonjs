@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { Rate } from "antd";
 const HotelCard = ({ hotel }) => {
   const defaultImage =
-    "https://lh3.googleusercontent.com/proxy/Pmxfqz90hmxK8cTLAardbE7f_Ik82bgMvtf5K5foa3XiAPBmEJi0M5UX4ECU8gHB84UUIFNNXRh93L-WV_-U7KzxYX6kQzyft0Pa4_iFQE1-svD2qlm-QjhgB9uKj3sp_FzmuPon7cBKpSw8wh1JneL16D7sHFs=s1360-w1360-h1020"; // Общее изображение для всех
+    "https://lh3.googleusercontent.com/p/AF1QipNTmoS5SvjN6nzJC8Eb-JO60z7xk9npwTm5U2pk=s1360-w1360-h1020";
   const rating = hotel.hotel_rating || 0;
   return (
     <div className="hotel-card">

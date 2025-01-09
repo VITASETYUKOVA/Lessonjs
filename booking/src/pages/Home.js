@@ -1,25 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { AutoComplete, Input, Button, message, Select } from "antd";
-import { fetchDestinationsThunk } from "../store/thunks/fetchDestinationsThunk";
-import { setHotels } from "../store/slices/hotelsSlice";
-import { hotelsLoader } from "../loaders/hotelsLoader";
+import { AutoComplete, Input, Button, Select } from "antd";
 
 const { Option } = Select;
-const Home = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const destinations = useSelector((state) => state.destinations.list);
-  const loading = useSelector((state) => state.destinations.loading);
-  const error = useSelector((state) => state.destinations.error);
-  const [isFetchingHotels, setIsFetchingHotels] = useState(false);
 
-  useEffect(() => {
-    dispatch(fetchDestinationsThunk());
-  }, [dispatch]);
+const Home = () => {
+  const {
+    list: destinations,
+    loading,
+    error,
+  } = useSelector((state) => state.destinations);
+  const navigate = useNavigate();
+  if (loading) {
+    return <div>Загрузка...</div>;
+  }
+  if (error) {
+    return <div style={{ color: "red" }}>Error: {error}</div>;
+  }
+  const validDestinations = Array.isArray(destinations)
+    ? destinations.filter((dest) => dest.id && dest.value && dest.label)
+    : [];
 
   const initialValues = {
     city: "",
@@ -37,24 +40,13 @@ const Home = () => {
     children: Yup.number().min(0, "Children cannot be negative.").required(),
   });
 
-  const handleSubmit = async (values) => {
-    setIsFetchingHotels(true);
-    try {
-      const hotels = await hotelsLoader();
-      dispatch(setHotels(hotels));
-      navigate("/hotels");
-    } catch (error) {
-      message.error("Error fetching hotels.");
-      console.error("Error fetching hotels:", error);
-    } finally {
-      setIsFetchingHotels(false);
-    }
+  const handleSubmit = (values) => {
+    navigate("/hotels");
   };
 
   return (
     <div className="home-container" style={{ paddingLeft: "100px" }}>
-      {error && <div style={{ color: "red" }}>Error: {error}</div>}
-
+      {error && <div style={{ color: "red" }}>Error: {error}</div>}{" "}
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
@@ -71,7 +63,7 @@ const Home = () => {
                 style={{ marginRight: "15px", width: "100%" }}
               >
                 <AutoComplete
-                  options={destinations.map((destination) => ({
+                  options={validDestinations.map((destination) => ({
                     value: destination.label,
                     key: destination.id,
                   }))}
@@ -83,7 +75,6 @@ const Home = () => {
                 />
                 <ErrorMessage name="city" component="div" className="error" />
               </div>
-
               <div
                 className="form-input"
                 style={{ marginRight: "15px", width: "100%" }}
@@ -161,8 +152,8 @@ const Home = () => {
                   type="primary"
                   htmlType="submit"
                   className="submit-btn"
-                  loading={isSubmitting || isFetchingHotels || loading}
-                  disabled={isSubmitting || isFetchingHotels || loading}
+                  loading={isSubmitting || loading}
+                  disabled={isSubmitting || loading}
                 >
                   Submit
                 </Button>
